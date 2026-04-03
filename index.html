@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Envision Supplier Summit 2026 — RSVP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#002855;--navy-light:#003570;--navy-card:#0a3468;--green:#78BE21;--white:#FFFFFF;--red:#e74c3c;--radius:8px}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--green);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Layout */
+.container{max-width:680px;margin:0 auto;padding:24px 20px 40px}
+
+/* Header */
+.header{text-align:center;margin-bottom:40px}
+.logo-placeholder{display:inline-block;padding:12px 24px;border:2px dashed rgba(255,255,255,.3);border-radius:var(--radius);color:rgba(255,255,255,.5);font-size:14px;letter-spacing:1px;margin-bottom:24px}
+.header h1{font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.header .date{color:var(--green);font-weight:600;font-size:clamp(.95rem,3vw,1.1rem);margin-bottom:12px}
+.header .tagline{font-weight:400;font-size:clamp(.85rem,2.5vw,.95rem);opacity:.85;max-width:520px;margin:0 auto;line-height:1.5}
+
+/* Cards */
+.card{background:var(--navy-card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px 24px;margin-bottom:24px}
+.card h2{font-size:clamp(1.1rem,3.5vw,1.3rem);font-weight:700;margin-bottom:4px}
+.card .subtitle{font-size:.85rem;opacity:.7;margin-bottom:20px;line-height:1.5}
+.accent-line{width:48px;height:3px;background:var(--green);border-radius:2px;margin-bottom:16px}
+
+/* Form elements */
+label.field-label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px}
+input[type="text"],input[type="email"]{width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);background:rgba(255,255,255,.06);color:var(--white);font-family:inherit;font-size:.95rem;transition:border .2s}
+input[type="text"]:focus,input[type="email"]:focus{outline:none;border-color:var(--green)}
+input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
+.field-group{margin-bottom:16px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:480px){.field-row{grid-template-columns:1fr}}
+
+/* Radio groups */
+.radio-group{display:flex;gap:12px;margin-top:6px}
+.radio-option{position:relative}
+.radio-option input{position:absolute;opacity:0;width:0;height:0}
+.radio-option span{display:inline-block;padding:8px 20px;border:1px solid rgba(255,255,255,.2);border-radius:var(--radius);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;user-select:none}
+.radio-option input:checked+span{background:var(--green);border-color:var(--green);color:#002200}
+.radio-option span:hover{border-color:var(--green)}
+
+/* Session items */
+.session-item{border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px;margin-bottom:14px;transition:border-color .2s}
+.session-item.error{border-color:var(--red)}
+.session-item .session-name{font-weight:600;font-size:.95rem;margin-bottom:2px}
+.session-item .session-time{font-size:.8rem;opacity:.6;margin-bottom:10px}
+.session-venue{font-size:.8rem;opacity:.5;font-style:italic;margin-bottom:14px;line-height:1.4}
+.day-heading{font-size:.95rem;font-weight:700;color:var(--green);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.08)}
+
+/* Inline prompts */
+.inline-prompt{margin-top:10px;padding:10px 14px;background:rgba(120,190,33,.08);border-left:3px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;font-size:.82rem;line-height:1.5;display:none}
+.inline-prompt.visible{display:block}
+.inline-prompt a,.inline-prompt .link-btn{color:var(--green);font-weight:600}
+.link-btn{display:inline-block;margin-top:6px;padding:6px 14px;border:1px solid var(--green);border-radius:var(--radius);font-size:.8rem;font-weight:600;color:var(--green);background:transparent;cursor:pointer;text-decoration:none;transition:all .2s}
+.link-btn:hover{background:var(--green);color:var(--navy);text-decoration:none}
+
+/* Error message */
+.error-msg{color:var(--red);font-size:.8rem;margin-top:6px;display:none}
+.error-msg.visible{display:block}
+.field-group.has-error input{border-color:var(--red)}
+
+/* Buttons */
+.btn-primary{display:block;width:100%;padding:14px;background:var(--green);color:var(--navy);font-family:inherit;font-size:1rem;font-weight:700;border:none;border-radius:var(--radius);cursor:pointer;transition:opacity .2s;letter-spacing:.3px}
+.btn-primary:hover{opacity:.9}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+
+/* Confirmation */
+.confirmation{text-align:center;padding:60px 20px}
+.confirmation .checkmark{width:64px;height:64px;background:var(--green);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:24px}
+.confirmation .checkmark svg{width:32px;height:32px}
+.confirmation h2{font-size:clamp(1.3rem,4vw,1.6rem);margin-bottom:12px;line-height:1.3}
+.confirmation p{opacity:.7;font-size:.95rem}
+
+/* Decline message */
+.decline-msg{text-align:center;padding:40px 20px}
+.decline-msg p{font-size:1rem;opacity:.8;line-height:1.6}
+
+/* Footer */
+.footer{text-align:center;padding:32px 0 16px;font-size:.75rem;opacity:.4}
+
+/* Hidden utility */
+.hidden{display:none}
+
+/* Step nav */
+.step-indicator{display:flex;justify-content:center;gap:8px;margin-bottom:28px}
+.step-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15);transition:background .3s}
+.step-dot.active{background:var(--green)}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-placeholder">[ENVISION_LOGO]</div>
+    <h1>Envision Supplier Summit</h1>
+    <p class="date">April 22–23, 2026 · Dallas, TX</p>
+    <p class="tagline">Building partnerships that strengthen supply chains and drive our shared mission forward.</p>
+  </header>
+
+  <!-- Step Indicator -->
+  <div class="step-indicator" id="stepIndicator">
+    <div class="step-dot active" data-step="1"></div>
+    <div class="step-dot" data-step="2"></div>
+    <div class="step-dot" data-step="3"></div>
+  </div>
+
+  <!-- Form -->
+  <form id="rsvpForm" novalidate>
+    <input type="hidden" name="access_key" value="[WEB3FORMS_ACCESS_KEY]">
+    <input type="hidden" name="subject" value="Envision Supplier Summit 2026 — RSVP">
+    <input type="hidden" name="from_name" value="Supplier Summit RSVP">
+    <input type="checkbox" name="botcheck" style="display:none">
+
+    <!-- STEP 1 -->
+    <div id="step1" class="step">
+      <div class="card">
+        <div class="accent-line"></div>
+        <h2>Your Info</h2>
+        <p class="subtitle">All fields are required.</p>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="firstName">First Name</label>
+            <input type="text" id="firstName" name="First Name" required>
+            <div class="error-msg">Required</div>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="Last Name" required>
+            <div class="error-msg">Required</div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="title">Title</label>
+          <input type="text" id="title" name="Title" required>
+          <div class="error-msg">Required</div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="company">Company / Organization</label>
+          <input type="text" id="company" name="Company / Organization" required>
+          <div class="error-msg">Required</div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Will you be attending the Envision Supplier Summit?</label>
+          <div class="radio-group" id="attendingGroup">
+            <label class="radio-option">
+              <input type="radio" name="Attending" value="Yes" required>
+              <span>Yes</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Attending" value="No">
+              <span>No</span>
+            </label>
+          </div>
+          <div class="error-msg" id="attendingError">Please select an option</div>
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary" id="step1Next">Continue</button>
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="step2" class="step hidden">
+      <div class="card">
+        <div class="accent-line"></div>
+        <h2>Session Attendance</h2>
+        <p class="subtitle">Which sessions will you be attending? Please respond to all sessions.</p>
+
+        <div class="day-heading">Wednesday, April 22 — Hotel DAX, 14315 Midway Road, Addison, TX 75254</div>
+
+        <div class="session-item" data-session="session-opening">
+          <div class="session-name">Leadership Introductions &amp; Opening Remarks</div>
+          <div class="session-time">1:00–4:00 PM</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Session: Leadership Introductions & Opening Remarks" value="Yes">
+              <span>Yes</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Session: Leadership Introductions & Opening Remarks" value="No">
+              <span>No</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="day-heading">Thursday, April 23 — Envision, 1801 Valley View Lane, Farmers Branch, TX 75234</div>
+
+        <div class="session-item" data-session="session-breakfast">
+          <div class="session-name">Continental Breakfast</div>
+          <div class="session-time">7:30–9:30 AM</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Session: Continental Breakfast" value="Yes">
+              <span>Yes</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Session: Continental Breakfast" value="No">
+              <span>No</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="session-item" data-session="session-meetings">
+          <div class="session-name">One-on-One Supply Chain Meetings</div>
+          <div class="session-time">8:00–11:00 AM</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Session: One-on-One Supply Chain Meetings" value="Yes">
+              <span>Yes</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Session: One-on-One Supply Chain Meetings" value="No">
+              <span>No</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="session-item" data-session="session-tours">
+          <div class="session-name">Plant Tours</div>
+          <div class="session-time">8:00–11:00 AM (tours depart hourly at 8, 9, and 10 AM)</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Session: Plant Tours" value="Yes">
+              <span>Yes</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Session: Plant Tours" value="No">
+              <span>No</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px">
+        <button type="button" class="btn-primary" id="step2Back" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--white);flex:0 0 auto;width:auto;padding:14px 24px">Back</button>
+        <button type="button" class="btn-primary" id="step2Next" style="flex:1">Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div id="step3" class="step hidden">
+      <div class="card">
+        <div class="accent-line"></div>
+        <h2>Beyond the Summit</h2>
+        <p class="subtitle">These evening and tournament experiences benefit Envision's Dallas Foundation. Pre-registration is required.</p>
+
+        <!-- Poker -->
+        <div class="session-item" data-session="event-poker">
+          <div class="session-name">All-In Poker Tournament</div>
+          <div class="session-time">Wednesday, April 22</div>
+          <div class="session-venue">Champions Social Club, 17776 Dallas Parkway, Dallas, TX 75287<br>Doors 5:00 PM / Tournament Begins 7:00 PM</div>
+          <label class="field-label">Are you registered for the Poker Tournament?</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Poker Tournament Registered" value="Yes" data-event="poker">
+              <span>Yes</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Poker Tournament Registered" value="No" data-event="poker">
+              <span>No</span>
+            </label>
+          </div>
+          <div class="inline-prompt" id="pokerPrompt">
+            <a href="https://pro.gofundme.com/event/envision-dallas-poker-tournament/e763479/register/new/select-tickets" target="_blank" rel="noopener" class="link-btn">Sign up here →</a>
+          </div>
+        </div>
+
+        <!-- Golf -->
+        <div class="session-item" data-session="event-golf">
+          <div class="session-name">ForeVision Golf Tournament</div>
+          <div class="session-time">Thursday, April 23</div>
+          <div class="session-venue">Cowboys Golf Club, 1600 Fairway Dr, Grapevine, TX 76051<br>Check-in &amp; Lunch 12:00 PM / Shotgun Start 1:30 PM / Awards Dinner 6:00 PM</div>
+          <label class="field-label">Are you registered for the Golf Tournament?</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Golf Tournament Registered" value="Yes" data-event="golf">
+              <span>Yes</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Golf Tournament Registered" value="No" data-event="golf">
+              <span>No</span>
+            </label>
+          </div>
+          <div class="inline-prompt" id="golfPrompt">
+            Playing solo? Contact Larissa Roman at <a href="mailto:Larissa.Roman@envisionus.com">Larissa.Roman@envisionus.com</a> for solo registration.
+            <br>
+            <a href="https://e.givesmart.com/events/n4q/" target="_blank" rel="noopener" class="link-btn" style="margin-top:8px">Register a Team →</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px">
+        <button type="button" class="btn-primary" id="step3Back" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--white);flex:0 0 auto;width:auto;padding:14px 24px">Back</button>
+        <button type="submit" class="btn-primary" id="submitBtn" style="flex:1">Submit RSVP</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Decline message -->
+  <div id="declineMsg" class="decline-msg hidden">
+    <div class="card" style="text-align:center;padding:48px 24px">
+      <p>Thank you, we hope to see you at a future event.</p>
+    </div>
+  </div>
+
+  <!-- Confirmation -->
+  <div id="confirmation" class="confirmation hidden">
+    <div class="checkmark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#002855" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2>You're confirmed.</h2>
+    <p>We'll see you April 22–23 in Dallas.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">EnvisionUS.com</footer>
+
+</div>
+
+<script>
+(function(){
+  var form = document.getElementById('rsvpForm');
+  var steps = [document.getElementById('step1'), document.getElementById('step2'), document.getElementById('step3')];
+  var dots = document.querySelectorAll('.step-dot');
+  var currentStep = 0;
+
+  function showStep(n) {
+    steps.forEach(function(s, i) {
+      s.classList.toggle('hidden', i !== n);
+    });
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i <= n);
+    });
+    currentStep = n;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Step 1 — Next
+  document.getElementById('step1Next').addEventListener('click', function() {
+    var valid = true;
+    var firstErr = null;
+
+    // Text fields
+    var fields = step1.querySelectorAll('input[type="text"]');
+    fields.forEach(function(f) {
+      var group = f.closest('.field-group');
+      var err = group.querySelector('.error-msg');
+      if (!f.value.trim()) {
+        group.classList.add('has-error');
+        err.classList.add('visible');
+        if (!firstErr) firstErr = f;
+        valid = false;
+      } else {
+        group.classList.remove('has-error');
+        err.classList.remove('visible');
+      }
+    });
+
+    // Attending radio
+    var attending = form.querySelector('input[name="Attending"]:checked');
+    var attendErr = document.getElementById('attendingError');
+    if (!attending) {
+      attendErr.classList.add('visible');
+      if (!firstErr) firstErr = document.getElementById('attendingGroup');
+      valid = false;
+    } else {
+      attendErr.classList.remove('visible');
+    }
+
+    if (!valid) {
+      firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // If declining
+    if (attending.value === 'No') {
+      form.classList.add('hidden');
+      document.getElementById('stepIndicator').classList.add('hidden');
+      document.getElementById('declineMsg').classList.remove('hidden');
+      return;
+    }
+
+    showStep(1);
+  });
+
+  // Step 2 — Back / Next
+  document.getElementById('step2Back').addEventListener('click', function() { showStep(0); });
+  document.getElementById('step2Next').addEventListener('click', function() {
+    var items = step2.querySelectorAll('.session-item');
+    var valid = true;
+    var firstErr = null;
+
+    items.forEach(function(item) {
+      var radios = item.querySelectorAll('input[type="radio"]');
+      var checked = Array.prototype.some.call(radios, function(r) { return r.checked; });
+      if (!checked) {
+        item.classList.add('error');
+        if (!firstErr) firstErr = item;
+        valid = false;
+      } else {
+        item.classList.remove('error');
+      }
+    });
+
+    if (!valid) {
+      firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    showStep(2);
+  });
+
+  // Step 3 — Back
+  document.getElementById('step3Back').addEventListener('click', function() { showStep(1); });
+
+  // Inline prompts for poker / golf
+  document.querySelectorAll('input[data-event="poker"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      document.getElementById('pokerPrompt').classList.toggle('visible', this.value === 'No');
+    });
+  });
+  document.querySelectorAll('input[data-event="golf"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      document.getElementById('golfPrompt').classList.toggle('visible', this.value === 'No');
+    });
+  });
+
+  // Clear errors on input
+  form.addEventListener('input', function(e) {
+    if (e.target.type === 'text') {
+      var g = e.target.closest('.field-group');
+      if (g) { g.classList.remove('has-error'); var em = g.querySelector('.error-msg'); if (em) em.classList.remove('visible'); }
+    }
+    if (e.target.type === 'radio') {
+      var si = e.target.closest('.session-item');
+      if (si) si.classList.remove('error');
+    }
+  });
+
+  // Submit
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Validate Step 3 sessions
+    var items = step3.querySelectorAll('.session-item');
+    var valid = true;
+    var firstErr = null;
+    items.forEach(function(item) {
+      var radios = item.querySelectorAll('input[type="radio"]');
+      var checked = Array.prototype.some.call(radios, function(r) { return r.checked; });
+      if (!checked) {
+        item.classList.add('error');
+        if (!firstErr) firstErr = item;
+        valid = false;
+      } else {
+        item.classList.remove('error');
+      }
+    });
+
+    if (!valid) {
+      firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    var data = new FormData(form);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: data
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(result) {
+      if (result.success) {
+        form.classList.add('hidden');
+        document.getElementById('stepIndicator').classList.add('hidden');
+        document.getElementById('confirmation').classList.remove('hidden');
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Submit RSVP';
+        alert('Something went wrong. Please try again.');
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Submit RSVP';
+      alert('Network error. Please check your connection and try again.');
+    });
+  });
+})();
+</script>
+</body>
+</html>
