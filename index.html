@@ -65,6 +65,52 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
 .link-btn{display:inline-block;margin-top:6px;padding:6px 14px;border:1px solid var(--green);border-radius:var(--radius);font-size:.8rem;font-weight:600;color:var(--green);background:transparent;cursor:pointer;text-decoration:none;transition:all .2s}
 .link-btn:hover{background:var(--green);color:var(--navy);text-decoration:none}
 
+/* Inline note callout */
+.inline-note{margin-top:10px;padding:10px 14px;border-left:3px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;font-size:.82rem;line-height:1.5;display:none;opacity:.85}
+.inline-note.visible{display:block}
+
+/* Checkbox multi-select */
+.checkbox-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.checkbox-option{position:relative}
+.checkbox-option input{position:absolute;opacity:0;width:0;height:0}
+.checkbox-option span{display:inline-block;padding:7px 14px;border:1px solid rgba(255,255,255,.2);border-radius:var(--radius);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;user-select:none}
+.checkbox-option input:checked+span{background:var(--green);border-color:var(--green);color:#002200}
+.checkbox-option span:hover{border-color:var(--green)}
+.topic-other-input{margin-top:8px;display:none}
+.topic-other-input.visible{display:block}
+.topics-wrapper{margin-top:10px;display:none}
+.topics-wrapper.visible{display:block}
+.topics-wrapper .field-label{margin-bottom:4px;font-size:.8rem;opacity:.8}
+
+/* Golf confirmation */
+.golf-confirm{margin-top:10px;padding:12px 14px;background:rgba(120,190,33,.08);border-left:3px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;font-size:.82rem;line-height:1.5;display:none}
+.golf-confirm.visible{display:block}
+.golf-confirm-btns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.golf-confirm-btns button{padding:8px 14px;border-radius:var(--radius);font-family:inherit;font-size:.8rem;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.3) !important;color:var(--white)}
+.btn-ghost:hover{border-color:var(--white) !important}
+.btn-green{background:var(--green);color:var(--navy)}
+.btn-green:hover{opacity:.9}
+.golf-final-no{margin-top:10px;display:none;font-size:.82rem;line-height:1.5}
+.golf-final-no.visible{display:block}
+
+/* Poker tagline */
+.poker-tagline{font-size:.75rem;font-style:italic;opacity:.5;margin-top:4px}
+
+/* Summary card */
+.summary-card{background:var(--navy-card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px 24px;margin-bottom:24px}
+.summary-card h2{font-size:clamp(1.1rem,3.5vw,1.3rem);font-weight:700;margin-bottom:4px}
+.summary-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.85rem}
+.summary-row:last-child{border-bottom:none}
+.summary-label{opacity:.6;font-weight:400}
+.summary-value{font-weight:600;text-align:right;max-width:60%}
+.summary-value.yes{color:var(--green)}
+.summary-value.no{opacity:.5}
+.summary-section{margin-top:16px}
+.summary-section-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.08)}
+.summary-note{font-size:.8rem;opacity:.6;margin-top:16px;text-align:center;font-style:italic}
+.summary-edit{display:inline-block;margin-top:4px;font-size:.8rem;color:var(--green);font-weight:600;cursor:pointer;text-decoration:underline}
+
 /* Error message */
 .error-msg{color:var(--red);font-size:.8rem;margin-top:6px;display:none}
 .error-msg.visible{display:block}
@@ -116,6 +162,7 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
     <div class="step-dot active" data-step="1"></div>
     <div class="step-dot" data-step="2"></div>
     <div class="step-dot" data-step="3"></div>
+    <div class="step-dot" data-step="4"></div>
   </div>
 
   <!-- Form -->
@@ -183,24 +230,25 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
         <h2>Session Attendance</h2>
         <p class="subtitle">Which sessions will you be attending? Please respond to all sessions.</p>
 
-        <div class="day-heading">Wednesday, April 22 — Hotel DAX, 14315 Midway Road, Addison, TX 75254</div>
+        <div class="day-heading">Wednesday, April 22 — Hotel DAX, 14315 Midway Road, Addison, TX 75001</div>
 
         <div class="session-item" data-session="session-opening">
           <div class="session-name">Leadership Introductions &amp; Opening Remarks</div>
           <div class="session-time">1:00–4:00 PM</div>
           <div class="radio-group">
             <label class="radio-option">
-              <input type="radio" name="Session: Leadership Introductions & Opening Remarks" value="Yes">
+              <input type="radio" name="Session: Leadership Introductions & Opening Remarks" value="Yes" data-session-trigger="opening">
               <span>Yes</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="Session: Leadership Introductions & Opening Remarks" value="No">
+              <input type="radio" name="Session: Leadership Introductions & Opening Remarks" value="No" data-session-trigger="opening">
               <span>No</span>
             </label>
           </div>
+          <div class="inline-note" id="openingNote">Note: Opening Remarks are held at Hotel DAX, 14315 Midway Road, Addison, TX 75001 — not at Envision, Dallas Campus.</div>
         </div>
 
-        <div class="day-heading">Thursday, April 23 — Envision, 1801 Valley View Lane, Farmers Branch, TX 75234</div>
+        <div class="day-heading">Thursday, April 23 — Envision, Dallas Campus, 1801 Valley View Lane, Farmers Branch, TX 75234</div>
 
         <div class="session-item" data-session="session-breakfast">
           <div class="session-name">Continental Breakfast</div>
@@ -222,13 +270,27 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
           <div class="session-time">8:00–11:00 AM</div>
           <div class="radio-group">
             <label class="radio-option">
-              <input type="radio" name="Session: One-on-One Supply Chain Meetings" value="Yes">
+              <input type="radio" name="Session: One-on-One Supply Chain Meetings" value="Yes" data-session-trigger="meetings">
               <span>Yes</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="Session: One-on-One Supply Chain Meetings" value="No">
+              <input type="radio" name="Session: One-on-One Supply Chain Meetings" value="No" data-session-trigger="meetings">
               <span>No</span>
             </label>
+          </div>
+          <div class="topics-wrapper" id="meetingTopics">
+            <label class="field-label">Is there anything specific you'd like to discuss in your 1-on-1?</label>
+            <div class="checkbox-group">
+              <label class="checkbox-option"><input type="checkbox" name="1-on-1 Topics" value="Current contracts"><span>Current contracts</span></label>
+              <label class="checkbox-option"><input type="checkbox" name="1-on-1 Topics" value="New opportunities"><span>New opportunities</span></label>
+              <label class="checkbox-option"><input type="checkbox" name="1-on-1 Topics" value="Operational alignment"><span>Operational alignment</span></label>
+              <label class="checkbox-option"><input type="checkbox" name="1-on-1 Topics" value="Pricing & terms"><span>Pricing &amp; terms</span></label>
+              <label class="checkbox-option"><input type="checkbox" name="1-on-1 Topics" value="Product or service updates"><span>Product or service updates</span></label>
+              <label class="checkbox-option"><input type="checkbox" name="1-on-1 Topics" value="Other" id="topicOtherCheck"><span>Other</span></label>
+            </div>
+            <div class="topic-other-input" id="topicOtherInput">
+              <input type="text" name="1-on-1 Topics Other" placeholder="Please describe">
+            </div>
           </div>
         </div>
 
@@ -266,6 +328,7 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
           <div class="session-name">All-In Poker Tournament</div>
           <div class="session-time">Wednesday, April 22</div>
           <div class="session-venue">Champions Social Club, 17776 Dallas Parkway, Dallas, TX 75287<br>Doors 5:00 PM / Tournament Begins 7:00 PM</div>
+          <div class="poker-tagline">Claim your seat today — pay before you play.</div>
           <label class="field-label">Are you registered for the Poker Tournament?</label>
           <div class="radio-group">
             <label class="radio-option">
@@ -278,7 +341,9 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
             </label>
           </div>
           <div class="inline-prompt" id="pokerPrompt">
-            <a href="https://pro.gofundme.com/event/envision-dallas-poker-tournament/e763479/register/new/select-tickets" target="_blank" rel="noopener" class="link-btn">Sign up here →</a>
+            Did you know? You can register today and pay on site. Registration closes April 12th.
+            <br>
+            <a href="https://pro.gofundme.com/event/envision-dallas-poker-tournament/e763479/register/new/select-tickets" target="_blank" rel="noopener" class="link-btn" style="margin-top:8px">Sign up here →</a>
           </div>
         </div>
 
@@ -288,7 +353,7 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
           <div class="session-time">Thursday, April 23</div>
           <div class="session-venue">Cowboys Golf Club, 1600 Fairway Dr, Grapevine, TX 76051<br>Check-in &amp; Lunch 12:00 PM / Shotgun Start 1:30 PM / Awards Dinner 6:00 PM</div>
           <label class="field-label">Are you registered for the Golf Tournament?</label>
-          <div class="radio-group">
+          <div class="radio-group" id="golfRadioGroup">
             <label class="radio-option">
               <input type="radio" name="Golf Tournament Registered" value="Yes" data-event="golf">
               <span>Yes</span>
@@ -298,16 +363,62 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
               <span>No</span>
             </label>
           </div>
-          <div class="inline-prompt" id="golfPrompt">
+          <div class="golf-confirm" id="golfConfirm">
+            It's not too late to join a foursome — are you sure?
+            <div class="golf-confirm-btns">
+              <button type="button" class="btn-ghost" id="golfConfirmNo">I'm sure, not attending</button>
+              <button type="button" class="btn-green" id="golfConfirmYes">Actually, I'm in</button>
+            </div>
+          </div>
+          <div class="golf-final-no" id="golfFinalNo">
             Playing solo? Contact Larissa Roman at <a href="mailto:Larissa.Roman@envisionus.com">Larissa.Roman@envisionus.com</a> for solo registration.
             <br>
-            <a href="https://e.givesmart.com/events/n4q/" target="_blank" rel="noopener" class="link-btn" style="margin-top:8px">Register a Team →</a>
+            <a href="https://www.envisionus.com/golf-fore-vision-dallas" target="_blank" rel="noopener" class="link-btn" style="margin-top:8px">Register a Team →</a>
           </div>
         </div>
       </div>
 
       <div style="display:flex;gap:12px">
         <button type="button" class="btn-primary" id="step3Back" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--white);flex:0 0 auto;width:auto;padding:14px 24px">Back</button>
+        <button type="button" class="btn-primary" id="step3Next" style="flex:1">Review &amp; Submit</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: SUMMARY -->
+    <div id="step4" class="step hidden">
+      <div class="summary-card">
+        <div class="accent-line"></div>
+        <h2>Review Your RSVP</h2>
+
+        <div class="summary-section">
+          <div class="summary-section-title">Your Info</div>
+          <div class="summary-row"><span class="summary-label">Name</span><span class="summary-value" id="sumName"></span></div>
+          <div class="summary-row"><span class="summary-label">Title</span><span class="summary-value" id="sumTitle"></span></div>
+          <div class="summary-row"><span class="summary-label">Company</span><span class="summary-value" id="sumCompany"></span></div>
+          <div class="summary-row"><span class="summary-label">Attending</span><span class="summary-value yes" id="sumAttending"></span></div>
+        </div>
+
+        <div class="summary-section">
+          <div class="summary-section-title">Sessions</div>
+          <div id="sumSessions"></div>
+        </div>
+
+        <div class="summary-section" id="sumTopicsSection" style="display:none">
+          <div class="summary-section-title">1-on-1 Discussion Topics</div>
+          <div class="summary-row"><span class="summary-value" id="sumTopics" style="max-width:100%;text-align:left"></span></div>
+        </div>
+
+        <div class="summary-section">
+          <div class="summary-section-title">Beyond the Summit</div>
+          <div class="summary-row"><span class="summary-label">Poker Tournament</span><span class="summary-value" id="sumPoker"></span></div>
+          <div class="summary-row"><span class="summary-label">Golf Tournament</span><span class="summary-value" id="sumGolf"></span></div>
+        </div>
+
+        <p class="summary-note">Please review your responses before submitting.<br><a class="summary-edit" id="sumEdit">Edit Responses</a></p>
+      </div>
+
+      <div style="display:flex;gap:12px">
+        <button type="button" class="btn-primary" id="step4Back" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--white);flex:0 0 auto;width:auto;padding:14px 24px">Back</button>
         <button type="submit" class="btn-primary" id="submitBtn" style="flex:1">Submit RSVP</button>
       </div>
     </div>
@@ -337,112 +448,208 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
 <script>
 (function(){
   var form = document.getElementById('rsvpForm');
-  var steps = [document.getElementById('step1'), document.getElementById('step2'), document.getElementById('step3')];
+  var step1El = document.getElementById('step1');
+  var step2El = document.getElementById('step2');
+  var step3El = document.getElementById('step3');
+  var step4El = document.getElementById('step4');
+  var steps = [step1El, step2El, step3El, step4El];
   var dots = document.querySelectorAll('.step-dot');
   var currentStep = 0;
 
   function showStep(n) {
-    steps.forEach(function(s, i) {
-      s.classList.toggle('hidden', i !== n);
-    });
-    dots.forEach(function(d, i) {
-      d.classList.toggle('active', i <= n);
-    });
+    steps.forEach(function(s, i) { s.classList.toggle('hidden', i !== n); });
+    dots.forEach(function(d, i) { d.classList.toggle('active', i <= n); });
     currentStep = n;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Step 1 — Next
-  document.getElementById('step1Next').addEventListener('click', function() {
-    var valid = true;
-    var firstErr = null;
+  function getRadioVal(name) {
+    var el = form.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
 
-    // Text fields
-    var fields = step1.querySelectorAll('input[type="text"]');
+  // ===== STEP 1 =====
+  document.getElementById('step1Next').addEventListener('click', function() {
+    var valid = true, firstErr = null;
+    var fields = step1El.querySelectorAll('input[type="text"]');
     fields.forEach(function(f) {
       var group = f.closest('.field-group');
       var err = group.querySelector('.error-msg');
       if (!f.value.trim()) {
-        group.classList.add('has-error');
-        err.classList.add('visible');
-        if (!firstErr) firstErr = f;
-        valid = false;
-      } else {
-        group.classList.remove('has-error');
-        err.classList.remove('visible');
-      }
+        group.classList.add('has-error'); err.classList.add('visible');
+        if (!firstErr) firstErr = f; valid = false;
+      } else { group.classList.remove('has-error'); err.classList.remove('visible'); }
     });
-
-    // Attending radio
     var attending = form.querySelector('input[name="Attending"]:checked');
     var attendErr = document.getElementById('attendingError');
     if (!attending) {
       attendErr.classList.add('visible');
-      if (!firstErr) firstErr = document.getElementById('attendingGroup');
-      valid = false;
-    } else {
-      attendErr.classList.remove('visible');
-    }
-
-    if (!valid) {
-      firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
-    }
-
-    // If declining
+      if (!firstErr) firstErr = document.getElementById('attendingGroup'); valid = false;
+    } else { attendErr.classList.remove('visible'); }
+    if (!valid) { firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     if (attending.value === 'No') {
       form.classList.add('hidden');
       document.getElementById('stepIndicator').classList.add('hidden');
       document.getElementById('declineMsg').classList.remove('hidden');
       return;
     }
-
     showStep(1);
   });
 
-  // Step 2 — Back / Next
+  // ===== STEP 2 =====
   document.getElementById('step2Back').addEventListener('click', function() { showStep(0); });
   document.getElementById('step2Next').addEventListener('click', function() {
-    var items = step2.querySelectorAll('.session-item');
-    var valid = true;
-    var firstErr = null;
-
+    var items = step2El.querySelectorAll('.session-item');
+    var valid = true, firstErr = null;
     items.forEach(function(item) {
       var radios = item.querySelectorAll('input[type="radio"]');
       var checked = Array.prototype.some.call(radios, function(r) { return r.checked; });
-      if (!checked) {
-        item.classList.add('error');
-        if (!firstErr) firstErr = item;
-        valid = false;
-      } else {
-        item.classList.remove('error');
-      }
+      if (!checked) { item.classList.add('error'); if (!firstErr) firstErr = item; valid = false; }
+      else { item.classList.remove('error'); }
     });
-
-    if (!valid) {
-      firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
-    }
-
+    if (!valid) { firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     showStep(2);
   });
 
-  // Step 3 — Back
+  // ===== STEP 2 TRIGGERS =====
+  // Opening Remarks — Yes shows note
+  document.querySelectorAll('input[data-session-trigger="opening"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      document.getElementById('openingNote').classList.toggle('visible', this.value === 'Yes');
+    });
+  });
+
+  // One-on-One Meetings — Yes shows topic picker
+  document.querySelectorAll('input[data-session-trigger="meetings"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      document.getElementById('meetingTopics').classList.toggle('visible', this.value === 'Yes');
+    });
+  });
+
+  // "Other" checkbox reveals text input
+  document.getElementById('topicOtherCheck').addEventListener('change', function() {
+    document.getElementById('topicOtherInput').classList.toggle('visible', this.checked);
+  });
+
+  // ===== STEP 3 =====
   document.getElementById('step3Back').addEventListener('click', function() { showStep(1); });
 
-  // Inline prompts for poker / golf
+  // Poker — No trigger
   document.querySelectorAll('input[data-event="poker"]').forEach(function(r) {
     r.addEventListener('change', function() {
       document.getElementById('pokerPrompt').classList.toggle('visible', this.value === 'No');
     });
   });
+
+  // Golf — No trigger (shows confirmation)
+  var golfConfirmed = false;
   document.querySelectorAll('input[data-event="golf"]').forEach(function(r) {
     r.addEventListener('change', function() {
-      document.getElementById('golfPrompt').classList.toggle('visible', this.value === 'No');
+      var confirm = document.getElementById('golfConfirm');
+      var finalNo = document.getElementById('golfFinalNo');
+      if (this.value === 'No') {
+        golfConfirmed = false;
+        confirm.classList.add('visible');
+        finalNo.classList.remove('visible');
+      } else {
+        golfConfirmed = false;
+        confirm.classList.remove('visible');
+        finalNo.classList.remove('visible');
+      }
     });
   });
 
-  // Clear errors on input
+  // Golf confirm: "I'm sure, not attending"
+  document.getElementById('golfConfirmNo').addEventListener('click', function() {
+    golfConfirmed = true;
+    document.getElementById('golfConfirm').classList.remove('visible');
+    document.getElementById('golfFinalNo').classList.add('visible');
+  });
+
+  // Golf confirm: "Actually, I'm in"
+  document.getElementById('golfConfirmYes').addEventListener('click', function() {
+    golfConfirmed = false;
+    var yesRadio = form.querySelector('input[name="Golf Tournament Registered"][value="Yes"]');
+    yesRadio.checked = true;
+    document.getElementById('golfConfirm').classList.remove('visible');
+    document.getElementById('golfFinalNo').classList.remove('visible');
+  });
+
+  // Step 3 Next → validate then show summary
+  document.getElementById('step3Next').addEventListener('click', function() {
+    var items = step3El.querySelectorAll('.session-item');
+    var valid = true, firstErr = null;
+    items.forEach(function(item) {
+      var radios = item.querySelectorAll('input[type="radio"]');
+      var checked = Array.prototype.some.call(radios, function(r) { return r.checked; });
+      if (!checked) { item.classList.add('error'); if (!firstErr) firstErr = item; valid = false; }
+      else { item.classList.remove('error'); }
+    });
+    if (!valid) { firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    buildSummary();
+    showStep(3);
+  });
+
+  // ===== STEP 4: SUMMARY =====
+  function buildSummary() {
+    document.getElementById('sumName').textContent = form.querySelector('#firstName').value + ' ' + form.querySelector('#lastName').value;
+    document.getElementById('sumTitle').textContent = form.querySelector('#title').value;
+    document.getElementById('sumCompany').textContent = form.querySelector('#company').value;
+    document.getElementById('sumAttending').textContent = 'Yes';
+
+    // Sessions
+    var sessionsHtml = '';
+    var sessionNames = [
+      'Session: Leadership Introductions & Opening Remarks',
+      'Session: Continental Breakfast',
+      'Session: One-on-One Supply Chain Meetings',
+      'Session: Plant Tours'
+    ];
+    var sessionLabels = [
+      'Leadership Introductions & Opening Remarks',
+      'Continental Breakfast',
+      'One-on-One Supply Chain Meetings',
+      'Plant Tours'
+    ];
+    for (var i = 0; i < sessionNames.length; i++) {
+      var val = getRadioVal(sessionNames[i]);
+      var cls = val === 'Yes' ? 'yes' : 'no';
+      sessionsHtml += '<div class="summary-row"><span class="summary-label">' + sessionLabels[i] + '</span><span class="summary-value ' + cls + '">' + val + '</span></div>';
+    }
+    document.getElementById('sumSessions').innerHTML = sessionsHtml;
+
+    // Topics
+    var topicChecks = form.querySelectorAll('input[name="1-on-1 Topics"]:checked');
+    var topics = [];
+    topicChecks.forEach(function(c) { topics.push(c.value); });
+    var otherText = form.querySelector('input[name="1-on-1 Topics Other"]').value.trim();
+    if (topics.indexOf('Other') !== -1 && otherText) {
+      topics = topics.filter(function(t) { return t !== 'Other'; });
+      topics.push('Other: ' + otherText);
+    }
+    var topicsSection = document.getElementById('sumTopicsSection');
+    if (topics.length > 0) {
+      topicsSection.style.display = '';
+      document.getElementById('sumTopics').textContent = topics.join(', ');
+    } else {
+      topicsSection.style.display = 'none';
+    }
+
+    // Poker & Golf
+    var pokerVal = getRadioVal('Poker Tournament Registered');
+    var golfVal = getRadioVal('Golf Tournament Registered');
+    var sumPoker = document.getElementById('sumPoker');
+    var sumGolf = document.getElementById('sumGolf');
+    sumPoker.textContent = pokerVal === 'Yes' ? 'Registered' : 'Not registered';
+    sumPoker.className = 'summary-value ' + (pokerVal === 'Yes' ? 'yes' : 'no');
+    sumGolf.textContent = golfVal === 'Yes' ? 'Registered' : 'Not registered';
+    sumGolf.className = 'summary-value ' + (golfVal === 'Yes' ? 'yes' : 'no');
+  }
+
+  document.getElementById('step4Back').addEventListener('click', function() { showStep(2); });
+  document.getElementById('sumEdit').addEventListener('click', function() { showStep(0); });
+
+  // ===== CLEAR ERRORS =====
   form.addEventListener('input', function(e) {
     if (e.target.type === 'text') {
       var g = e.target.closest('.field-group');
@@ -454,34 +661,12 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
     }
   });
 
-  // Submit
+  // ===== SUBMIT =====
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-
-    // Validate Step 3 sessions
-    var items = step3.querySelectorAll('.session-item');
-    var valid = true;
-    var firstErr = null;
-    items.forEach(function(item) {
-      var radios = item.querySelectorAll('input[type="radio"]');
-      var checked = Array.prototype.some.call(radios, function(r) { return r.checked; });
-      if (!checked) {
-        item.classList.add('error');
-        if (!firstErr) firstErr = item;
-        valid = false;
-      } else {
-        item.classList.remove('error');
-      }
-    });
-
-    if (!valid) {
-      firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
-    }
-
     var btn = document.getElementById('submitBtn');
     btn.disabled = true;
-    btn.textContent = 'Submitting…';
+    btn.textContent = 'Submitting\u2026';
 
     var data = new FormData(form);
 
