@@ -21,9 +21,10 @@ a:hover{text-decoration:underline}
 
 /* Header */
 .header{text-align:center;margin-bottom:40px}
-.logo-placeholder{display:inline-block;padding:12px 24px;border:2px dashed rgba(255,255,255,.3);border-radius:var(--radius);color:rgba(255,255,255,.5);font-size:14px;letter-spacing:1px;margin-bottom:24px}
-.header h1{font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
-.header .date{color:var(--green);font-weight:600;font-size:clamp(.95rem,3vw,1.1rem);margin-bottom:12px}
+.logo-mark{margin-bottom:28px}
+.logo-mark .logo-envision{display:block;font-size:clamp(2.8rem,9vw,4.2rem);font-weight:700;letter-spacing:2px;text-transform:uppercase;line-height:1;color:var(--white)}
+.logo-mark .logo-summit{display:block;font-size:clamp(1.6rem,5vw,2.4rem);font-weight:600;font-style:italic;color:var(--green);line-height:1.1;margin-top:-2px}
+.header .date{color:var(--green);font-weight:600;font-size:clamp(.95rem,3vw,1.1rem);margin-bottom:12px;letter-spacing:1px;text-transform:uppercase}
 .header .tagline{font-weight:400;font-size:clamp(.85rem,2.5vw,.95rem);opacity:.85;max-width:520px;margin:0 auto;line-height:1.5}
 
 /* Cards */
@@ -102,8 +103,10 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
 
   <!-- Header -->
   <header class="header">
-    <div class="logo-placeholder">[ENVISION_LOGO]</div>
-    <h1>Envision Supplier Summit</h1>
+    <div class="logo-mark">
+      <span class="logo-envision">Envision</span>
+      <span class="logo-summit">Supplier Summit</span>
+    </div>
     <p class="date">April 22–23, 2026 · Dallas, TX</p>
     <p class="tagline">Building partnerships that strengthen supply chains and drive our shared mission forward.</p>
   </header>
