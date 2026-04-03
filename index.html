@@ -83,16 +83,16 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
 .topics-wrapper .field-label{margin-bottom:4px;font-size:.8rem;opacity:.8}
 
 /* Golf confirmation */
-.golf-confirm{margin-top:10px;padding:12px 14px;background:rgba(120,190,33,.08);border-left:3px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;font-size:.82rem;line-height:1.5;display:none}
-.golf-confirm.visible{display:block}
-.golf-confirm-btns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.golf-confirm-btns button{padding:8px 14px;border-radius:var(--radius);font-family:inherit;font-size:.8rem;font-weight:600;cursor:pointer;border:none;transition:all .2s}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.3) !important;color:var(--white)}
-.btn-ghost:hover{border-color:var(--white) !important}
-.btn-green{background:var(--green);color:var(--navy)}
-.btn-green:hover{opacity:.9}
-.golf-final-no{margin-top:10px;display:none;font-size:.82rem;line-height:1.5}
-.golf-final-no.visible{display:block}
+.golf-sub-options{margin-top:12px;display:none}
+.golf-sub-options.visible{display:block}
+.golf-sub-option{border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:14px;margin-bottom:10px;font-size:.82rem;line-height:1.5}
+.golf-sub-option p{margin-bottom:8px}
+.golf-solo-check{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:.8rem}
+.golf-solo-check input[type="checkbox"]{width:16px;height:16px;accent-color:var(--green)}
+
+/* Three-state radio */
+.radio-group-3{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.radio-group-3 .radio-option span{padding:8px 14px;font-size:.8rem}
 
 /* Poker tagline */
 .poker-tagline{font-size:.75rem;font-style:italic;opacity:.5;margin-top:4px}
@@ -328,22 +328,30 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
           <div class="session-name">All-In Poker Tournament</div>
           <div class="session-time">Wednesday, April 22</div>
           <div class="session-venue">Champions Social Club, 17776 Dallas Parkway, Dallas, TX 75287<br>Doors 5:00 PM / Tournament Begins 7:00 PM</div>
-          <div class="poker-tagline">Claim your seat today — pay before you play.</div>
           <label class="field-label">Are you registered for the Poker Tournament?</label>
-          <div class="radio-group">
+          <div class="radio-group-3">
             <label class="radio-option">
-              <input type="radio" name="Poker Tournament Registered" value="Yes" data-event="poker">
-              <span>Yes</span>
+              <input type="radio" name="Poker Tournament" value="Yes, I'm registered" data-event="poker">
+              <span>Yes, I'm registered</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="Poker Tournament Registered" value="No" data-event="poker">
-              <span>No</span>
+              <input type="radio" name="Poker Tournament" value="No, but I'd like to attend" data-event="poker">
+              <span>No, but I'd like to attend</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Poker Tournament" value="Unable to attend" data-event="poker">
+              <span>Unable to attend</span>
             </label>
           </div>
-          <div class="inline-prompt" id="pokerPrompt">
-            Did you know? You can register today and pay on site. Registration closes April 12th.
+          <div class="inline-prompt" id="pokerInterested">
+            Claim your seat today — pay when you play.
             <br>
-            <a href="https://pro.gofundme.com/event/envision-dallas-poker-tournament/e763479/register/new/select-tickets" target="_blank" rel="noopener" class="link-btn" style="margin-top:8px">Sign up here →</a>
+            <a href="https://pro.gofundme.com/event/envision-dallas-poker-tournament/e763479/register/new/select-tickets" target="_blank" rel="noopener" class="link-btn" style="margin-top:8px">Register Now →</a>
+          </div>
+          <div class="inline-prompt" id="pokerUnable">
+            Don't get folded out just yet. Did you know you can register now and pay when you arrive? You don't have to commit until you're at the table.
+            <br>
+            <a href="https://pro.gofundme.com/event/envision-dallas-poker-tournament/e763479/register/new/select-tickets" target="_blank" rel="noopener" class="link-btn" style="margin-top:8px">Claim My Seat →</a>
           </div>
         </div>
 
@@ -353,27 +361,33 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
           <div class="session-time">Thursday, April 23</div>
           <div class="session-venue">Cowboys Golf Club, 1600 Fairway Dr, Grapevine, TX 76051<br>Check-in &amp; Lunch 12:00 PM / Shotgun Start 1:30 PM / Awards Dinner 6:00 PM</div>
           <label class="field-label">Are you registered for the Golf Tournament?</label>
-          <div class="radio-group" id="golfRadioGroup">
+          <div class="radio-group-3">
             <label class="radio-option">
-              <input type="radio" name="Golf Tournament Registered" value="Yes" data-event="golf">
-              <span>Yes</span>
+              <input type="radio" name="Golf Tournament" value="Yes, I'm registered" data-event="golf">
+              <span>Yes, I'm registered</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="Golf Tournament Registered" value="No" data-event="golf">
-              <span>No</span>
+              <input type="radio" name="Golf Tournament" value="No, but I'd like to attend" data-event="golf">
+              <span>No, but I'd like to attend</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Golf Tournament" value="Unable to attend" data-event="golf">
+              <span>Unable to attend</span>
             </label>
           </div>
-          <div class="golf-confirm" id="golfConfirm">
-            It's not too late to join a foursome — are you sure?
-            <div class="golf-confirm-btns">
-              <button type="button" class="btn-ghost" id="golfConfirmNo">I'm sure, not attending</button>
-              <button type="button" class="btn-green" id="golfConfirmYes">Actually, I'm in</button>
+          <div class="golf-sub-options" id="golfInterested">
+            <div class="golf-sub-option">
+              <p><strong>I'm interested in playing solo</strong></p>
+              <p>We'll do our best to get you placed. By selecting this, our team will follow up to connect you with a foursome. You're also welcome to reach out directly to Larissa Roman at <a href="mailto:Larissa.Roman@envisionus.com">Larissa.Roman@envisionus.com</a>.</p>
+              <label class="golf-solo-check"><input type="checkbox" name="Golf Solo Interest" value="Yes"> Please have someone reach out to me about solo registration.</label>
+            </div>
+            <div class="golf-sub-option">
+              <p><strong>I'd like to register a team</strong></p>
+              <a href="https://www.envisionus.com/golf-fore-vision-dallas" target="_blank" rel="noopener" class="link-btn">Register a Team →</a>
             </div>
           </div>
-          <div class="golf-final-no" id="golfFinalNo">
-            Playing solo? Contact Larissa Roman at <a href="mailto:Larissa.Roman@envisionus.com">Larissa.Roman@envisionus.com</a> for solo registration.
-            <br>
-            <a href="https://www.envisionus.com/golf-fore-vision-dallas" target="_blank" rel="noopener" class="link-btn" style="margin-top:8px">Register a Team →</a>
+          <div class="inline-prompt" id="golfUnable">
+            Did you know you can play solo? Reach out to Larissa Roman at <a href="mailto:Larissa.Roman@envisionus.com">Larissa.Roman@envisionus.com</a> to get added to a foursome. It's not too late to join us on the course.
           </div>
         </div>
       </div>
@@ -412,6 +426,7 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
           <div class="summary-section-title">Beyond the Summit</div>
           <div class="summary-row"><span class="summary-label">Poker Tournament</span><span class="summary-value" id="sumPoker"></span></div>
           <div class="summary-row"><span class="summary-label">Golf Tournament</span><span class="summary-value" id="sumGolf"></span></div>
+          <div class="summary-row" id="sumGolfSolo" style="display:none"><span class="summary-label">Solo Registration</span><span class="summary-value yes">Requested outreach</span></div>
         </div>
 
         <p class="summary-note">Please review your responses before submitting.<br><a class="summary-edit" id="sumEdit">Edit Responses</a></p>
@@ -534,45 +549,22 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
   // ===== STEP 3 =====
   document.getElementById('step3Back').addEventListener('click', function() { showStep(1); });
 
-  // Poker — No trigger
+  // Poker — three-state
   document.querySelectorAll('input[data-event="poker"]').forEach(function(r) {
     r.addEventListener('change', function() {
-      document.getElementById('pokerPrompt').classList.toggle('visible', this.value === 'No');
+      var val = this.value;
+      document.getElementById('pokerInterested').classList.toggle('visible', val === "No, but I'd like to attend");
+      document.getElementById('pokerUnable').classList.toggle('visible', val === 'Unable to attend');
     });
   });
 
-  // Golf — No trigger (shows confirmation)
-  var golfConfirmed = false;
+  // Golf — three-state
   document.querySelectorAll('input[data-event="golf"]').forEach(function(r) {
     r.addEventListener('change', function() {
-      var confirm = document.getElementById('golfConfirm');
-      var finalNo = document.getElementById('golfFinalNo');
-      if (this.value === 'No') {
-        golfConfirmed = false;
-        confirm.classList.add('visible');
-        finalNo.classList.remove('visible');
-      } else {
-        golfConfirmed = false;
-        confirm.classList.remove('visible');
-        finalNo.classList.remove('visible');
-      }
+      var val = this.value;
+      document.getElementById('golfInterested').classList.toggle('visible', val === "No, but I'd like to attend");
+      document.getElementById('golfUnable').classList.toggle('visible', val === 'Unable to attend');
     });
-  });
-
-  // Golf confirm: "I'm sure, not attending"
-  document.getElementById('golfConfirmNo').addEventListener('click', function() {
-    golfConfirmed = true;
-    document.getElementById('golfConfirm').classList.remove('visible');
-    document.getElementById('golfFinalNo').classList.add('visible');
-  });
-
-  // Golf confirm: "Actually, I'm in"
-  document.getElementById('golfConfirmYes').addEventListener('click', function() {
-    golfConfirmed = false;
-    var yesRadio = form.querySelector('input[name="Golf Tournament Registered"][value="Yes"]');
-    yesRadio.checked = true;
-    document.getElementById('golfConfirm').classList.remove('visible');
-    document.getElementById('golfFinalNo').classList.remove('visible');
   });
 
   // Step 3 Next → validate then show summary
@@ -635,15 +627,28 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
       topicsSection.style.display = 'none';
     }
 
-    // Poker & Golf
-    var pokerVal = getRadioVal('Poker Tournament Registered');
-    var golfVal = getRadioVal('Golf Tournament Registered');
+    // Poker
+    var pokerVal = getRadioVal('Poker Tournament');
     var sumPoker = document.getElementById('sumPoker');
+    var pokerLabels = { "Yes, I'm registered": 'Registered', "No, but I'd like to attend": 'Interested', 'Unable to attend': 'Not attending' };
+    sumPoker.textContent = pokerLabels[pokerVal] || pokerVal;
+    sumPoker.className = 'summary-value ' + (pokerVal === 'Unable to attend' ? 'no' : 'yes');
+
+    // Golf
+    var golfVal = getRadioVal('Golf Tournament');
     var sumGolf = document.getElementById('sumGolf');
-    sumPoker.textContent = pokerVal === 'Yes' ? 'Registered' : 'Not registered';
-    sumPoker.className = 'summary-value ' + (pokerVal === 'Yes' ? 'yes' : 'no');
-    sumGolf.textContent = golfVal === 'Yes' ? 'Registered' : 'Not registered';
-    sumGolf.className = 'summary-value ' + (golfVal === 'Yes' ? 'yes' : 'no');
+    var golfLabels = { "Yes, I'm registered": 'Registered', "No, but I'd like to attend": 'Interested', 'Unable to attend': 'Not attending' };
+    sumGolf.textContent = golfLabels[golfVal] || golfVal;
+    sumGolf.className = 'summary-value ' + (golfVal === 'Unable to attend' ? 'no' : 'yes');
+
+    // Golf solo interest
+    var soloCheck = form.querySelector('input[name="Golf Solo Interest"]');
+    var sumGolfSolo = document.getElementById('sumGolfSolo');
+    if (golfVal === "No, but I'd like to attend" && soloCheck && soloCheck.checked) {
+      sumGolfSolo.style.display = '';
+    } else {
+      sumGolfSolo.style.display = 'none';
+    }
   }
 
   document.getElementById('step4Back').addEventListener('click', function() { showStep(2); });
