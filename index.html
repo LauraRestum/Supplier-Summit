@@ -25,19 +25,19 @@ a:hover{text-decoration:underline}
 .logo-mark .logo-envision{display:block;font-size:clamp(2.8rem,9vw,4.2rem);font-weight:700;letter-spacing:2px;text-transform:uppercase;line-height:1;color:var(--white)}
 .logo-mark .logo-summit{display:block;font-size:clamp(1.6rem,5vw,2.4rem);font-weight:600;font-style:italic;color:var(--green);line-height:1.1;margin-top:-2px}
 .header .date{color:var(--green);font-weight:600;font-size:clamp(.95rem,3vw,1.1rem);margin-bottom:12px;letter-spacing:1px;text-transform:uppercase}
-.header .tagline{font-weight:400;font-size:clamp(.85rem,2.5vw,.95rem);opacity:.85;max-width:520px;margin:0 auto;line-height:1.5}
+.header .tagline{font-weight:400;font-size:clamp(.9rem,2.5vw,1rem);opacity:1;max-width:520px;margin:0 auto;line-height:1.5}
 
 /* Cards */
 .card{background:var(--navy-card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px 24px;margin-bottom:24px}
 .card h2{font-size:clamp(1.1rem,3.5vw,1.3rem);font-weight:700;margin-bottom:4px}
-.card .subtitle{font-size:.85rem;opacity:.7;margin-bottom:20px;line-height:1.5}
+.card .subtitle{font-size:.9rem;opacity:.9;margin-bottom:20px;line-height:1.5}
 .accent-line{width:48px;height:3px;background:var(--green);border-radius:2px;margin-bottom:16px}
 
 /* Form elements */
-label.field-label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px}
+label.field-label{display:block;font-size:.9rem;font-weight:600;margin-bottom:6px}
 input[type="text"],input[type="email"]{width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);background:rgba(255,255,255,.06);color:var(--white);font-family:inherit;font-size:.95rem;transition:border .2s}
 input[type="text"]:focus,input[type="email"]:focus{outline:none;border-color:var(--green)}
-input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
+input[type="text"]::placeholder{color:rgba(255,255,255,.5)}
 .field-group{margin-bottom:16px}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:480px){.field-row{grid-template-columns:1fr}}
@@ -46,53 +46,81 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
 .radio-group{display:flex;gap:12px;margin-top:6px}
 .radio-option{position:relative}
 .radio-option input{position:absolute;opacity:0;width:0;height:0}
-.radio-option span{display:inline-block;padding:8px 20px;border:1px solid rgba(255,255,255,.2);border-radius:var(--radius);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;user-select:none}
+.radio-option span{display:inline-block;padding:8px 20px;border:1px solid rgba(255,255,255,.3);border-radius:var(--radius);font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s;user-select:none}
 .radio-option input:checked+span{background:var(--green);border-color:var(--green);color:#002200}
 .radio-option span:hover{border-color:var(--green)}
 
 /* Session items */
 .session-item{border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px;margin-bottom:14px;transition:border-color .2s}
 .session-item.error{border-color:var(--red)}
-.session-item .session-name{font-weight:600;font-size:.95rem;margin-bottom:2px}
-.session-item .session-time{font-size:.8rem;opacity:.6;margin-bottom:10px}
-.session-venue{font-size:.8rem;opacity:.5;font-style:italic;margin-bottom:14px;line-height:1.4}
+.session-item .session-name{font-weight:700;font-size:1rem;margin-bottom:2px}
+.session-item .session-time{font-size:.85rem;opacity:.85;margin-bottom:10px}
+.session-venue{font-size:.85rem;opacity:.8;font-style:italic;margin-bottom:14px;line-height:1.4}
 .day-heading{font-size:.95rem;font-weight:700;color:var(--green);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.08)}
 
 /* Inline prompts */
-.inline-prompt{margin-top:10px;padding:10px 14px;background:rgba(120,190,33,.08);border-left:3px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;font-size:.82rem;line-height:1.5;display:none}
+.inline-prompt{margin-top:10px;padding:10px 14px;background:rgba(120,190,33,.08);border-left:3px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;font-size:.88rem;line-height:1.5;display:none}
 .inline-prompt.visible{display:block}
 .inline-prompt a,.inline-prompt .link-btn{color:var(--green);font-weight:600}
-.link-btn{display:inline-block;margin-top:6px;padding:6px 14px;border:1px solid var(--green);border-radius:var(--radius);font-size:.8rem;font-weight:600;color:var(--green);background:transparent;cursor:pointer;text-decoration:none;transition:all .2s}
+.link-btn{display:inline-block;margin-top:6px;padding:6px 14px;border:1px solid var(--green);border-radius:var(--radius);font-size:.88rem;font-weight:600;color:var(--green);background:transparent;cursor:pointer;text-decoration:none;transition:all .2s}
 .link-btn:hover{background:var(--green);color:var(--navy);text-decoration:none}
 
 /* Inline note callout */
-.inline-note{margin-top:10px;padding:10px 14px;border-left:3px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;font-size:.82rem;line-height:1.5;display:none;opacity:.85}
+.inline-note{margin-top:10px;padding:10px 14px;border-left:3px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;font-size:.88rem;line-height:1.5;display:none;opacity:1}
 .inline-note.visible{display:block}
 
 /* Checkbox multi-select */
 .checkbox-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .checkbox-option{position:relative}
 .checkbox-option input{position:absolute;opacity:0;width:0;height:0}
-.checkbox-option span{display:inline-block;padding:7px 14px;border:1px solid rgba(255,255,255,.2);border-radius:var(--radius);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;user-select:none}
+.checkbox-option span{display:inline-block;padding:7px 14px;border:1px solid rgba(255,255,255,.3);border-radius:var(--radius);font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s;user-select:none}
 .checkbox-option input:checked+span{background:var(--green);border-color:var(--green);color:#002200}
 .checkbox-option span:hover{border-color:var(--green)}
 .topic-other-input{margin-top:8px;display:none}
 .topic-other-input.visible{display:block}
 .topics-wrapper{margin-top:10px;display:none}
 .topics-wrapper.visible{display:block}
-.topics-wrapper .field-label{margin-bottom:4px;font-size:.8rem;opacity:.8}
+.topics-wrapper .field-label{margin-bottom:4px;font-size:.88rem;opacity:1}
+
+/* Time slot picker */
+.timeslot-wrapper{margin-top:10px;display:none}
+.timeslot-wrapper.visible{display:block}
+.timeslot-wrapper .field-label{margin-bottom:4px;font-size:.88rem}
+.timeslot-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.timeslot-option{position:relative}
+.timeslot-option input{position:absolute;opacity:0;width:0;height:0}
+.timeslot-option span{display:inline-block;padding:8px 16px;border:1px solid rgba(255,255,255,.3);border-radius:var(--radius);font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s;user-select:none}
+.timeslot-option input:checked+span{background:var(--green);border-color:var(--green);color:#002200}
+.timeslot-option span:hover{border-color:var(--green)}
+.timeslot-option.disabled span{opacity:.3;cursor:not-allowed;border-color:rgba(255,255,255,.1)}
+.timeslot-option.disabled span:hover{border-color:rgba(255,255,255,.1)}
+.timeslot-conflict{font-size:.78rem;color:var(--red);margin-top:6px;display:none}
+.timeslot-conflict.visible{display:block}
+.timeslot-note{font-size:.8rem;opacity:.7;margin-top:4px;font-style:italic}
 
 /* Golf confirmation */
 .golf-sub-options{margin-top:12px;display:none}
 .golf-sub-options.visible{display:block}
-.golf-sub-option{border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:14px;margin-bottom:10px;font-size:.82rem;line-height:1.5}
+.golf-sub-option{border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:14px;margin-bottom:10px;font-size:.88rem;line-height:1.5}
 .golf-sub-option p{margin-bottom:8px}
-.golf-solo-check{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:.8rem}
+.golf-solo-check{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:.88rem}
 .golf-solo-check input[type="checkbox"]{width:16px;height:16px;accent-color:var(--green)}
 
 /* Three-state radio */
 .radio-group-3{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.radio-group-3 .radio-option span{padding:8px 14px;font-size:.8rem}
+.radio-group-3 .radio-option span{padding:8px 14px;font-size:.88rem}
+
+/* Accommodations */
+.hotel-card{border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.hotel-card .hotel-name{font-weight:700;font-size:1rem;margin-bottom:2px}
+.hotel-card .hotel-address{font-size:.88rem;opacity:.9;margin-bottom:2px;line-height:1.4}
+.hotel-card .hotel-phone{font-size:.88rem;opacity:.9}
+.hotel-card .hotel-note{font-size:.85rem;font-style:italic;opacity:.8;margin-top:4px}
+.hotel-rate{font-size:.9rem;color:var(--green);font-weight:700;margin-top:4px}
+.accom-dates{margin-top:12px;display:none}
+.accom-dates.visible{display:block}
+.alt-hotels{margin-top:20px}
+.alt-hotels-heading{font-size:.9rem;font-weight:600;margin-bottom:12px;opacity:.9}
 
 /* Poker tagline */
 .poker-tagline{font-size:.75rem;font-style:italic;opacity:.5;margin-top:4px}
@@ -100,19 +128,19 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
 /* Summary card */
 .summary-card{background:var(--navy-card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px 24px;margin-bottom:24px}
 .summary-card h2{font-size:clamp(1.1rem,3.5vw,1.3rem);font-weight:700;margin-bottom:4px}
-.summary-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.85rem}
+.summary-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.9rem}
 .summary-row:last-child{border-bottom:none}
-.summary-label{opacity:.6;font-weight:400}
+.summary-label{opacity:.9;font-weight:400}
 .summary-value{font-weight:600;text-align:right;max-width:60%}
 .summary-value.yes{color:var(--green)}
-.summary-value.no{opacity:.5}
+.summary-value.no{opacity:.8}
 .summary-section{margin-top:16px}
-.summary-section-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.08)}
-.summary-note{font-size:.8rem;opacity:.6;margin-top:16px;text-align:center;font-style:italic}
-.summary-edit{display:inline-block;margin-top:4px;font-size:.8rem;color:var(--green);font-weight:600;cursor:pointer;text-decoration:underline}
+.summary-section-title{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.1)}
+.summary-note{font-size:.85rem;opacity:.9;margin-top:16px;text-align:center;font-style:italic}
+.summary-edit{display:inline-block;margin-top:4px;font-size:.88rem;color:var(--green);font-weight:600;cursor:pointer;text-decoration:underline}
 
 /* Error message */
-.error-msg{color:var(--red);font-size:.8rem;margin-top:6px;display:none}
+.error-msg{color:var(--red);font-size:.85rem;margin-top:6px;display:none}
 .error-msg.visible{display:block}
 .field-group.has-error input{border-color:var(--red)}
 
@@ -126,14 +154,14 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
 .confirmation .checkmark{width:64px;height:64px;background:var(--green);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:24px}
 .confirmation .checkmark svg{width:32px;height:32px}
 .confirmation h2{font-size:clamp(1.3rem,4vw,1.6rem);margin-bottom:12px;line-height:1.3}
-.confirmation p{opacity:.7;font-size:.95rem}
+.confirmation p{opacity:1;font-size:1rem}
 
 /* Decline message */
 .decline-msg{text-align:center;padding:40px 20px}
-.decline-msg p{font-size:1rem;opacity:.8;line-height:1.6}
+.decline-msg p{font-size:1rem;opacity:1;line-height:1.6}
 
 /* Footer */
-.footer{text-align:center;padding:32px 0 16px;font-size:.75rem;opacity:.4}
+.footer{text-align:center;padding:32px 0 16px;font-size:.8rem;opacity:.7}
 
 /* Hidden utility */
 .hidden{display:none}
@@ -163,6 +191,7 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
     <div class="step-dot" data-step="2"></div>
     <div class="step-dot" data-step="3"></div>
     <div class="step-dot" data-step="4"></div>
+    <div class="step-dot" data-step="5"></div>
   </div>
 
   <!-- Form -->
@@ -278,6 +307,15 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
               <span>No</span>
             </label>
           </div>
+          <div class="timeslot-wrapper" id="meetingSlots">
+            <label class="field-label">Select your preferred time slot(s):</label>
+            <div class="timeslot-group">
+              <label class="timeslot-option" data-slot="8am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Slots" value="8:00 AM"><span>8:00 AM</span></label>
+              <label class="timeslot-option" data-slot="9am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Slots" value="9:00 AM"><span>9:00 AM</span></label>
+              <label class="timeslot-option" data-slot="10am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Slots" value="10:00 AM"><span>10:00 AM</span></label>
+            </div>
+            <div class="timeslot-note">Time slots shared with Plant Tours — selecting a slot here will block it for tours.</div>
+          </div>
           <div class="topics-wrapper" id="meetingTopics">
             <label class="field-label">Is there anything specific you'd like to discuss in your 1-on-1?</label>
             <div class="checkbox-group">
@@ -299,13 +337,22 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
           <div class="session-time">8:00–11:00 AM (tours depart hourly at 8, 9, and 10 AM)</div>
           <div class="radio-group">
             <label class="radio-option">
-              <input type="radio" name="Session: Plant Tours" value="Yes">
+              <input type="radio" name="Session: Plant Tours" value="Yes" data-session-trigger="tours">
               <span>Yes</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="Session: Plant Tours" value="No">
+              <input type="radio" name="Session: Plant Tours" value="No" data-session-trigger="tours">
               <span>No</span>
             </label>
+          </div>
+          <div class="timeslot-wrapper" id="tourSlots">
+            <label class="field-label">Select your preferred tour time(s):</label>
+            <div class="timeslot-group">
+              <label class="timeslot-option" data-slot="8am" data-type="tour"><input type="checkbox" name="Plant Tour Time Slots" value="8:00 AM"><span>8:00 AM</span></label>
+              <label class="timeslot-option" data-slot="9am" data-type="tour"><input type="checkbox" name="Plant Tour Time Slots" value="9:00 AM"><span>9:00 AM</span></label>
+              <label class="timeslot-option" data-slot="10am" data-type="tour"><input type="checkbox" name="Plant Tour Time Slots" value="10:00 AM"><span>10:00 AM</span></label>
+            </div>
+            <div class="timeslot-note">Time slots shared with 1-on-1 Meetings — selecting a slot here will block it for meetings.</div>
           </div>
         </div>
       </div>
@@ -394,12 +441,84 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
 
       <div style="display:flex;gap:12px">
         <button type="button" class="btn-primary" id="step3Back" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--white);flex:0 0 auto;width:auto;padding:14px 24px">Back</button>
-        <button type="button" class="btn-primary" id="step3Next" style="flex:1">Review &amp; Submit</button>
+        <button type="button" class="btn-primary" id="step3Next" style="flex:1">Continue</button>
       </div>
     </div>
 
-    <!-- STEP 4: SUMMARY -->
+    <!-- STEP 4: ACCOMMODATIONS -->
     <div id="step4" class="step hidden">
+      <div class="card">
+        <div class="accent-line"></div>
+        <h2>Accommodations</h2>
+        <p class="subtitle">Let us know if you need a room and we'll take care of the rest.</p>
+
+        <div class="hotel-card">
+          <div class="hotel-name">Hotel DAX</div>
+          <div class="hotel-address">14315 Midway Road, Addison, TX 75001</div>
+          <div class="hotel-phone"><a href="tel:9725320090" style="color:var(--green)">(972) 532-0090</a></div>
+          <div class="hotel-rate">$159 / night</div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Would you like us to reserve a room at Hotel DAX?</label>
+          <div class="radio-group" id="hotelGroup">
+            <label class="radio-option">
+              <input type="radio" name="Hotel Reservation" value="Yes" data-hotel="dax">
+              <span>Yes</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Hotel Reservation" value="No" data-hotel="dax">
+              <span>No</span>
+            </label>
+          </div>
+          <div class="error-msg" id="hotelError">Please select an option</div>
+        </div>
+
+        <div class="accom-dates" id="accomDates">
+          <p class="subtitle" style="margin-bottom:12px">Just let us know you're coming and we will take care of the rest.</p>
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label" for="hotelFirstName">First Name</label>
+              <input type="text" id="hotelFirstName" name="Hotel First Name">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="hotelLastName">Last Name</label>
+              <input type="text" id="hotelLastName" name="Hotel Last Name">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label" for="arrivalDate">Arrival Date</label>
+              <input type="text" id="arrivalDate" name="Arrival Date" placeholder="MM/DD/YYYY">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="departureDate">Departure Date</label>
+              <input type="text" id="departureDate" name="Departure Date" placeholder="MM/DD/YYYY">
+            </div>
+          </div>
+        </div>
+
+        <div class="inline-prompt" id="altHotels">
+          <strong>Other Accommodation Options</strong><br><br>
+          <strong>DoubleTree by Hilton</strong><br>
+          11611 Luna Road, Farmers Branch, TX 75234<br>
+          <a href="tel:9725060055" style="color:var(--green)">(972) 506-0055</a><br>
+          <span style="font-style:italic;opacity:.7">(Near Envision's Dallas Campus) — Reference Booking Code: <strong>Envision Dallas</strong></span><br><br>
+          <strong>Hampton Inn &amp; Suites Farmers Branch</strong><br>
+          1570 Mira Lago Blvd., Farmers Branch, TX 75234<br>
+          <a href="tel:9723734900" style="color:var(--green)">(972) 373-4900</a><br>
+          <span style="font-style:italic;opacity:.7">(Near Envision Dallas)</span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px">
+        <button type="button" class="btn-primary" id="step4Back" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--white);flex:0 0 auto;width:auto;padding:14px 24px">Back</button>
+        <button type="button" class="btn-primary" id="step4Next" style="flex:1">Review &amp; Submit</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: SUMMARY -->
+    <div id="step5" class="step hidden">
       <div class="summary-card">
         <div class="accent-line"></div>
         <h2>Review Your RSVP</h2>
@@ -429,11 +548,21 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
           <div class="summary-row" id="sumGolfSolo" style="display:none"><span class="summary-label">Solo Registration</span><span class="summary-value yes">Requested outreach</span></div>
         </div>
 
+        <div class="summary-section">
+          <div class="summary-section-title">Accommodations</div>
+          <div class="summary-row"><span class="summary-label">Hotel DAX Reservation</span><span class="summary-value" id="sumHotel"></span></div>
+          <div id="sumHotelDetails" style="display:none">
+            <div class="summary-row"><span class="summary-label">Guest Name</span><span class="summary-value" id="sumHotelName"></span></div>
+            <div class="summary-row"><span class="summary-label">Arrival</span><span class="summary-value" id="sumArrival"></span></div>
+            <div class="summary-row"><span class="summary-label">Departure</span><span class="summary-value" id="sumDeparture"></span></div>
+          </div>
+        </div>
+
         <p class="summary-note">Please review your responses before submitting.<br><a class="summary-edit" id="sumEdit">Edit Responses</a></p>
       </div>
 
       <div style="display:flex;gap:12px">
-        <button type="button" class="btn-primary" id="step4Back" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--white);flex:0 0 auto;width:auto;padding:14px 24px">Back</button>
+        <button type="button" class="btn-primary" id="step5Back" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--white);flex:0 0 auto;width:auto;padding:14px 24px">Back</button>
         <button type="submit" class="btn-primary" id="submitBtn" style="flex:1">Submit RSVP</button>
       </div>
     </div>
@@ -467,7 +596,8 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
   var step2El = document.getElementById('step2');
   var step3El = document.getElementById('step3');
   var step4El = document.getElementById('step4');
-  var steps = [step1El, step2El, step3El, step4El];
+  var step5El = document.getElementById('step5');
+  var steps = [step1El, step2El, step3El, step4El, step5El];
   var dots = document.querySelectorAll('.step-dot');
   var currentStep = 0;
 
@@ -534,11 +664,71 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
     });
   });
 
-  // One-on-One Meetings — Yes shows topic picker
+  // One-on-One Meetings — Yes shows slots + topic picker
   document.querySelectorAll('input[data-session-trigger="meetings"]').forEach(function(r) {
     r.addEventListener('change', function() {
-      document.getElementById('meetingTopics').classList.toggle('visible', this.value === 'Yes');
+      var isYes = this.value === 'Yes';
+      document.getElementById('meetingSlots').classList.toggle('visible', isYes);
+      document.getElementById('meetingTopics').classList.toggle('visible', isYes);
+      if (!isYes) {
+        // Uncheck meeting slots and re-enable corresponding tour slots
+        document.querySelectorAll('input[name="1-on-1 Time Slots"]').forEach(function(cb) {
+          cb.checked = false;
+        });
+        updateSlotConflicts();
+      }
     });
+  });
+
+  // Plant Tours — Yes shows slots
+  document.querySelectorAll('input[data-session-trigger="tours"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      var isYes = this.value === 'Yes';
+      document.getElementById('tourSlots').classList.toggle('visible', isYes);
+      if (!isYes) {
+        // Uncheck tour slots and re-enable corresponding meeting slots
+        document.querySelectorAll('input[name="Plant Tour Time Slots"]').forEach(function(cb) {
+          cb.checked = false;
+        });
+        updateSlotConflicts();
+      }
+    });
+  });
+
+  // Time slot conflict logic
+  function updateSlotConflicts() {
+    var slots = ['8am', '9am', '10am'];
+    slots.forEach(function(slot) {
+      var meetingCb = document.querySelector('.timeslot-option[data-slot="' + slot + '"][data-type="meeting"] input');
+      var tourCb = document.querySelector('.timeslot-option[data-slot="' + slot + '"][data-type="tour"] input');
+      var meetingLabel = meetingCb.closest('.timeslot-option');
+      var tourLabel = tourCb.closest('.timeslot-option');
+
+      // If meeting slot is checked, disable tour slot
+      if (meetingCb.checked) {
+        tourLabel.classList.add('disabled');
+        tourCb.checked = false;
+        tourCb.disabled = true;
+      } else {
+        tourLabel.classList.remove('disabled');
+        tourCb.disabled = false;
+      }
+
+      // If tour slot is checked, disable meeting slot
+      if (tourCb.checked) {
+        meetingLabel.classList.add('disabled');
+        meetingCb.checked = false;
+        meetingCb.disabled = true;
+      } else if (!tourCb.checked) {
+        meetingLabel.classList.remove('disabled');
+        meetingCb.disabled = false;
+      }
+    });
+  }
+
+  // Attach conflict update to all time slot checkboxes
+  document.querySelectorAll('.timeslot-option input').forEach(function(cb) {
+    cb.addEventListener('change', updateSlotConflicts);
   });
 
   // "Other" checkbox reveals text input
@@ -567,7 +757,7 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
     });
   });
 
-  // Step 3 Next → validate then show summary
+  // Step 3 Next → validate then go to accommodations
   document.getElementById('step3Next').addEventListener('click', function() {
     var items = step3El.querySelectorAll('.session-item');
     var valid = true, firstErr = null;
@@ -578,11 +768,46 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
       else { item.classList.remove('error'); }
     });
     if (!valid) { firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
-    buildSummary();
     showStep(3);
   });
 
-  // ===== STEP 4: SUMMARY =====
+  // ===== STEP 4: ACCOMMODATIONS =====
+  document.getElementById('step4Back').addEventListener('click', function() { showStep(2); });
+
+  // Hotel reservation Yes/No toggle
+  document.querySelectorAll('input[data-hotel="dax"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      document.getElementById('accomDates').classList.toggle('visible', this.value === 'Yes');
+      document.getElementById('altHotels').classList.toggle('visible', this.value === 'No');
+      document.getElementById('hotelError').classList.remove('visible');
+    });
+  });
+
+  // Auto-fill hotel name from Step 1
+  document.querySelectorAll('input[data-hotel="dax"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      if (this.value === 'Yes') {
+        var hf = document.getElementById('hotelFirstName');
+        var hl = document.getElementById('hotelLastName');
+        if (!hf.value) hf.value = form.querySelector('#firstName').value;
+        if (!hl.value) hl.value = form.querySelector('#lastName').value;
+      }
+    });
+  });
+
+  // Step 4 Next → validate hotel selection, then show summary
+  document.getElementById('step4Next').addEventListener('click', function() {
+    var hotelSel = form.querySelector('input[name="Hotel Reservation"]:checked');
+    if (!hotelSel) {
+      document.getElementById('hotelError').classList.add('visible');
+      document.getElementById('hotelGroup').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    buildSummary();
+    showStep(4);
+  });
+
+  // ===== STEP 5: SUMMARY =====
   function buildSummary() {
     document.getElementById('sumName').textContent = form.querySelector('#firstName').value + ' ' + form.querySelector('#lastName').value;
     document.getElementById('sumTitle').textContent = form.querySelector('#title').value;
@@ -607,6 +832,18 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
       var val = getRadioVal(sessionNames[i]);
       var cls = val === 'Yes' ? 'yes' : 'no';
       sessionsHtml += '<div class="summary-row"><span class="summary-label">' + sessionLabels[i] + '</span><span class="summary-value ' + cls + '">' + val + '</span></div>';
+    }
+    // Add time slots for meetings
+    var meetingSlots = [];
+    form.querySelectorAll('input[name="1-on-1 Time Slots"]:checked').forEach(function(cb) { meetingSlots.push(cb.value); });
+    if (meetingSlots.length > 0) {
+      sessionsHtml += '<div class="summary-row"><span class="summary-label" style="padding-left:12px">↳ 1-on-1 Time Slots</span><span class="summary-value yes">' + meetingSlots.join(', ') + '</span></div>';
+    }
+    // Add time slots for tours
+    var tourSlots = [];
+    form.querySelectorAll('input[name="Plant Tour Time Slots"]:checked').forEach(function(cb) { tourSlots.push(cb.value); });
+    if (tourSlots.length > 0) {
+      sessionsHtml += '<div class="summary-row"><span class="summary-label" style="padding-left:12px">↳ Plant Tour Times</span><span class="summary-value yes">' + tourSlots.join(', ') + '</span></div>';
     }
     document.getElementById('sumSessions').innerHTML = sessionsHtml;
 
@@ -649,9 +886,26 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.3)}
     } else {
       sumGolfSolo.style.display = 'none';
     }
+
+    // Accommodations
+    var hotelVal = getRadioVal('Hotel Reservation');
+    var sumHotel = document.getElementById('sumHotel');
+    sumHotel.textContent = hotelVal === 'Yes' ? 'Yes — Hotel DAX' : 'No';
+    sumHotel.className = 'summary-value ' + (hotelVal === 'Yes' ? 'yes' : 'no');
+    var sumHotelDetails = document.getElementById('sumHotelDetails');
+    if (hotelVal === 'Yes') {
+      sumHotelDetails.style.display = '';
+      var hfn = form.querySelector('#hotelFirstName').value;
+      var hln = form.querySelector('#hotelLastName').value;
+      document.getElementById('sumHotelName').textContent = (hfn + ' ' + hln).trim() || '—';
+      document.getElementById('sumArrival').textContent = form.querySelector('#arrivalDate').value || '—';
+      document.getElementById('sumDeparture').textContent = form.querySelector('#departureDate').value || '—';
+    } else {
+      sumHotelDetails.style.display = 'none';
+    }
   }
 
-  document.getElementById('step4Back').addEventListener('click', function() { showStep(2); });
+  document.getElementById('step5Back').addEventListener('click', function() { showStep(3); });
   document.getElementById('sumEdit').addEventListener('click', function() { showStep(0); });
 
   // ===== CLEAR ERRORS =====
