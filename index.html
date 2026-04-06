@@ -308,13 +308,16 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.5)}
             </label>
           </div>
           <div class="timeslot-wrapper" id="meetingSlots">
-            <label class="field-label">Select your preferred time slot(s):</label>
+            <label class="field-label">Select your preferred window(s) of time:</label>
             <div class="timeslot-group">
-              <label class="timeslot-option" data-slot="8am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Slots" value="8:00 AM"><span>8:00 AM</span></label>
-              <label class="timeslot-option" data-slot="9am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Slots" value="9:00 AM"><span>9:00 AM</span></label>
-              <label class="timeslot-option" data-slot="10am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Slots" value="10:00 AM"><span>10:00 AM</span></label>
+              <label class="timeslot-option" data-slot="8am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Windows" value="8:00–8:30 AM"><span>8:00–8:30</span></label>
+              <label class="timeslot-option" data-slot="8am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Windows" value="8:30–9:00 AM"><span>8:30–9:00</span></label>
+              <label class="timeslot-option" data-slot="9am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Windows" value="9:00–9:30 AM"><span>9:00–9:30</span></label>
+              <label class="timeslot-option" data-slot="9am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Windows" value="9:30–10:00 AM"><span>9:30–10:00</span></label>
+              <label class="timeslot-option" data-slot="10am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Windows" value="10:00–10:30 AM"><span>10:00–10:30</span></label>
+              <label class="timeslot-option" data-slot="10am" data-type="meeting"><input type="checkbox" name="1-on-1 Time Windows" value="10:30–11:00 AM"><span>10:30–11:00</span></label>
             </div>
-            <div class="timeslot-note">Time slots shared with Plant Tours — selecting a slot here will block it for tours.</div>
+            <div class="timeslot-note">Time windows shared with Plant Tours — selecting a window here will block the corresponding tour time.</div>
           </div>
           <div class="topics-wrapper" id="meetingTopics">
             <label class="field-label">Is there anything specific you'd like to discuss in your 1-on-1?</label>
@@ -503,11 +506,12 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.5)}
           <strong>DoubleTree by Hilton</strong><br>
           11611 Luna Road, Farmers Branch, TX 75234<br>
           <a href="tel:9725060055" style="color:var(--green)">(972) 506-0055</a><br>
-          <span style="font-style:italic;opacity:.7">(Near Envision's Dallas Campus) — Reference Booking Code: <strong>Envision Dallas</strong></span><br><br>
+          <span style="font-style:italic;opacity:.7">(Near Envision's Dallas Campus)</span><br><br>
           <strong>Hampton Inn &amp; Suites Farmers Branch</strong><br>
           1570 Mira Lago Blvd., Farmers Branch, TX 75234<br>
           <a href="tel:9723734900" style="color:var(--green)">(972) 373-4900</a><br>
-          <span style="font-style:italic;opacity:.7">(Near Envision Dallas)</span>
+          <span style="font-style:italic;opacity:.7">(Near Envision Dallas)</span><br><br>
+          <span style="opacity:.9">Reference Booking Code: <strong>Envision Dallas</strong> (for both hotels above)</span>
         </div>
       </div>
 
@@ -672,7 +676,7 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.5)}
       document.getElementById('meetingTopics').classList.toggle('visible', isYes);
       if (!isYes) {
         // Uncheck meeting slots and re-enable corresponding tour slots
-        document.querySelectorAll('input[name="1-on-1 Time Slots"]').forEach(function(cb) {
+        document.querySelectorAll('input[name="1-on-1 Time Windows"]').forEach(function(cb) {
           cb.checked = false;
         });
         updateSlotConflicts();
@@ -695,17 +699,18 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.5)}
     });
   });
 
-  // Time slot conflict logic
+  // Time slot conflict logic — meeting windows are 30-min, tours are hourly
   function updateSlotConflicts() {
-    var slots = ['8am', '9am', '10am'];
-    slots.forEach(function(slot) {
-      var meetingCb = document.querySelector('.timeslot-option[data-slot="' + slot + '"][data-type="meeting"] input');
-      var tourCb = document.querySelector('.timeslot-option[data-slot="' + slot + '"][data-type="tour"] input');
-      var meetingLabel = meetingCb.closest('.timeslot-option');
+    var hours = ['8am', '9am', '10am'];
+    hours.forEach(function(hour) {
+      var meetingCbs = document.querySelectorAll('.timeslot-option[data-slot="' + hour + '"][data-type="meeting"] input');
+      var tourCb = document.querySelector('.timeslot-option[data-slot="' + hour + '"][data-type="tour"] input');
       var tourLabel = tourCb.closest('.timeslot-option');
 
-      // If meeting slot is checked, disable tour slot
-      if (meetingCb.checked) {
+      // If any meeting window in this hour is checked, disable the tour slot
+      var anyMeetingChecked = false;
+      meetingCbs.forEach(function(cb) { if (cb.checked) anyMeetingChecked = true; });
+      if (anyMeetingChecked) {
         tourLabel.classList.add('disabled');
         tourCb.checked = false;
         tourCb.disabled = true;
@@ -714,15 +719,18 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.5)}
         tourCb.disabled = false;
       }
 
-      // If tour slot is checked, disable meeting slot
-      if (tourCb.checked) {
-        meetingLabel.classList.add('disabled');
-        meetingCb.checked = false;
-        meetingCb.disabled = true;
-      } else if (!tourCb.checked) {
-        meetingLabel.classList.remove('disabled');
-        meetingCb.disabled = false;
-      }
+      // If tour slot is checked, disable all meeting windows in this hour
+      meetingCbs.forEach(function(mcb) {
+        var mLabel = mcb.closest('.timeslot-option');
+        if (tourCb.checked) {
+          mLabel.classList.add('disabled');
+          mcb.checked = false;
+          mcb.disabled = true;
+        } else if (!tourCb.checked) {
+          mLabel.classList.remove('disabled');
+          mcb.disabled = false;
+        }
+      });
     });
   }
 
@@ -834,10 +842,10 @@ input[type="text"]::placeholder{color:rgba(255,255,255,.5)}
       sessionsHtml += '<div class="summary-row"><span class="summary-label">' + sessionLabels[i] + '</span><span class="summary-value ' + cls + '">' + val + '</span></div>';
     }
     // Add time slots for meetings
-    var meetingSlots = [];
-    form.querySelectorAll('input[name="1-on-1 Time Slots"]:checked').forEach(function(cb) { meetingSlots.push(cb.value); });
-    if (meetingSlots.length > 0) {
-      sessionsHtml += '<div class="summary-row"><span class="summary-label" style="padding-left:12px">↳ 1-on-1 Time Slots</span><span class="summary-value yes">' + meetingSlots.join(', ') + '</span></div>';
+    var meetingWindows = [];
+    form.querySelectorAll('input[name="1-on-1 Time Windows"]:checked').forEach(function(cb) { meetingWindows.push(cb.value); });
+    if (meetingWindows.length > 0) {
+      sessionsHtml += '<div class="summary-row"><span class="summary-label" style="padding-left:12px">↳ 1-on-1 Windows</span><span class="summary-value yes">' + meetingWindows.join(', ') + '</span></div>';
     }
     // Add time slots for tours
     var tourSlots = [];
